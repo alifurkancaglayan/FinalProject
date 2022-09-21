@@ -12,8 +12,20 @@ namespace ConsoleUI
         //open closed principle yeni bir özellik eklendiğinde mevcuttaki kodlar değişmez
         static void Main(string[] args)
         {
-            ProductTest();
+            //ProductTest();
+            ProductTestGetAll();
             //CategoryTest();
+        }
+
+        private static void ProductTestGetAll()
+        {
+            ProductManager productManager = new ProductManager(new EfProductDal());
+
+            foreach (var product in productManager.GetAll().Data)
+            {
+                Console.WriteLine(product.ProductName);
+            }
+            
         }
 
         private static void CategoryTest()
